@@ -19,7 +19,7 @@ var cards = [
 {
   rank:'king',
   suit: 'diamonds',
-  cardImage:'images/king-of-hearts.png'
+  cardImage:'images/king-of-diamonds.png'
 }
 ];
 var cardsInPlay=[];
