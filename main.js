@@ -35,17 +35,47 @@ if (cardsInPlay.length===2) {
 }
 
 
-var flipCard = function(cardId){
-
-console.log("user flipped" + " "+ cards[cardId].rank);
+var flipCard = function(){
+  // used getAttribute method to get the data-id attribute of the card
+  // that used for clicked and store in variable
+var cardId = this.getAttribute('data-id');
+// used push method to push into the cards
 cardsInPlay.push(cards[cardId].rank);
-console.log(cards[cardId].cardImage);
+console.log("User flipped " + cards[cardId].rank);
 console.log(cards[cardId].suit);
-checkForMatch();
-}
-flipCard(0);
-flipCard(2);
+console.log(cards[cardId].cardImage);
+//used setAttribute method to update the src attribute to the image
+// that also for clicked and for cardimage property
+this.setAttribute('src', cards[cardId].cardImage);
 
+
+  checkForMatch();
+
+}
+
+//flipCard(0);
+//flipCard(2);
+// created a new function createBoard
+var createBoard = function(){
+  // within the createBoard function used for loop
+  for (var i=0; i<cards.length; i++) {
+    // then created img elemnt and stored in variable cardElement
+    var cardElement = document.createElement("img");
+    //then used set attribute method to add a src attribute for the element
+    cardElement.setAttribute('src', 'images/back.png');
+    // again followed the same attribute rules for the data-id
+    cardElement.setAttribute('data-id', i);
+    // then addEventListener method to add a click event
+    cardElement.addEventListener('click', flipCard);
+    // finnaly used appendChild method to append the current cardElement
+    // to the game board where id of game-board
+    document.getElementById('game-board').appendChild(cardElement);
+
+  }
+
+};
+// called the createBoard function
+createBoard();
 
 
 
